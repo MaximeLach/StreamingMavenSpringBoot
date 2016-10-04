@@ -5,13 +5,14 @@
  */
 package streaming.test;
 
+import java.util.List;
 import org.junit.Test;
-import static org.junit.Assert.*;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import streaming.dao.FilmDAO;
+import streaming.dao.PersonneDAO;
+import streaming.entity.Personne;
 import streaming.spring.SpringConfig;
 
 /**
@@ -20,15 +21,26 @@ import streaming.spring.SpringConfig;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes=SpringConfig.class)
-public class FilmDAOTest {
+public class PersonneDAOTest {
     
     @Autowired
-    private FilmDAO dao;
+    private PersonneDAO dao;
     
     @Test
-    public void testSupprimerTout(){
-        dao.deleteAll();
+    public void PersonneDAOTest(){
+        Personne p1 = new Personne();
+        p1.setNom("X");
+        p1.setPrenom("Y"); 
+        dao.ajouterPersonne(p1);
+        
+        Personne p2 = new Personne();
+        p2.setNom("A");
+        p2.setPrenom("B"); 
+        dao.ajouterPersonne(p2);
+        
+        List<Personne> personnes = dao.listerPersonnes();
+        for(Personne p : personnes){
+            System.out.println("Personne : " +p.getNom() +" " + p.getPrenom());
+        }
     }
-    
-    
 }
