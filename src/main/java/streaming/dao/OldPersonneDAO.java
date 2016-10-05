@@ -5,29 +5,30 @@
  */
 package streaming.dao;
 
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-import streaming.entity.Pays;
+import streaming.entity.Personne;
 
 /**
  *
  * @author admin
  */
-
 @Repository
-public class PaysDAO {
-    
+public class OldPersonneDAO {
+
     @PersistenceContext
     private EntityManager em;
     
     @Transactional
-    public void ajouter(Pays pays){
-        em.persist(pays);
+    public void ajouterPersonne(Personne personne){
+        em.persist(personne);
     }
     
-    public Pays rechercher(Long id){
-        return em.find(Pays.class, id);
+    public List<Personne> listerPersonnes(){
+        return em.createQuery("SELECT p FROM Personne p ORDER BY p.nom, p.prenom").getResultList();
     }
+    
 }

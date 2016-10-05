@@ -3,15 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package streaming.dao;
+package streaming.service;
 
+import java.util.List;
 import org.springframework.data.repository.CrudRepository;
-import streaming.entity.Serie;
+import streaming.entity.Personne;
 
 /**
  *
  * @author admin
  */
-public interface SerieDAO extends CrudRepository<Serie, Long>{
+public interface PersonneServiceCRUD extends CrudRepository<Personne, Long>{
+    public Personne findOneByPrenomAndNom(String p, String n);
     
+    @Override
+    public List<Personne> findAll();
 }

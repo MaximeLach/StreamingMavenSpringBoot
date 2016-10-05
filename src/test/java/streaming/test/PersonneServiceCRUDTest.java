@@ -6,13 +6,16 @@
 package streaming.test;
 
 import java.util.List;
+import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import streaming.dao.PersonneDAO;
+import streaming.dao.OldPersonneDAO;
 import streaming.entity.Personne;
+import streaming.service.PersonneServiceCRUD;
 import streaming.spring.SpringConfig;
 
 /**
@@ -21,26 +24,37 @@ import streaming.spring.SpringConfig;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes=SpringConfig.class)
-public class PersonneDAOTest {
+public class PersonneServiceCRUDTest {
     
     @Autowired
-    private PersonneDAO dao;
+    private PersonneServiceCRUD crud;
     
-    @Test
-    public void PersonneDAOTest(){
+    @Before
+    public void Config(){
+        crud.deleteAll();
         Personne p1 = new Personne();
-        p1.setNom("X");
-        p1.setPrenom("Y"); 
-        dao.ajouterPersonne(p1);
+        p1.setNom("X1");
+        p1.setPrenom("Y1"); 
+        crud.save(p1);
         
         Personne p2 = new Personne();
-        p2.setNom("A");
-        p2.setPrenom("B"); 
-        dao.ajouterPersonne(p2);
-        
-        List<Personne> personnes = dao.listerPersonnes();
+        p2.setNom("A1");
+        p2.setPrenom("B1"); 
+        crud.save(p2);
+    }
+    
+    //@Test
+    public void PersonneCRUDTest(){
+        List<Personne> personnes = crud.findAll();
         for(Personne p : personnes){
             System.out.println("Personne : " +p.getNom() +" " + p.getPrenom());
         }
+        
     }
+    
+    @Test
+    public void PersonneCRUDTestFindOneBy(){
+        Assert.assertNotNull(crud.findOneByPrenomAndNom("Y1", "X1"));
+    }
+    
 }
