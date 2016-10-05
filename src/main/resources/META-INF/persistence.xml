@@ -4,6 +4,7 @@
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>streaming.entity.Episode</class>
     <class>streaming.entity.Film</class>
+    <class>streaming.entity.Genre</class>
     <class>streaming.entity.Lien</class>
     <class>streaming.entity.Pays</class>
     <class>streaming.entity.Personne</class>

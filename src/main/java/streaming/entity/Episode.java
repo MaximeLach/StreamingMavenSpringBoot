@@ -99,7 +99,7 @@ public class Episode implements Serializable {
 
     @Override
     public String toString() {
-        return "streaming.entity.Episode[ id=" + id + " ]";
+        return "jpql.entity.Episode[ id=" + id + " ]";
     }
     
 }

@@ -129,7 +129,7 @@ public class Lien implements Serializable {
 
     @Override
     public String toString() {
-        return "streaming.entity.Lien[ id=" + id + " ]";
+        return "jpql.entity.Lien[ id=" + id + " ]";
     }
     
 }

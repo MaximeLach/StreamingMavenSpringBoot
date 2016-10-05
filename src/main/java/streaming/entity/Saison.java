@@ -90,7 +90,7 @@ public class Saison implements Serializable {
 
     @Override
     public String toString() {
-        return "streaming.entity.Saison[ id=" + id + " ]";
+        return "jpql.entity.Saison[ id=" + id + " ]";
     }
     
 }

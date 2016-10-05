@@ -13,7 +13,6 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import streaming.dao.OldPersonneDAO;
 import streaming.entity.Personne;
 import streaming.service.PersonneServiceCRUD;
 import streaming.spring.SpringConfig;
@@ -29,19 +28,19 @@ public class PersonneServiceCRUDTest {
     @Autowired
     private PersonneServiceCRUD crud;
     
-    @Before
-    public void Config(){
-        crud.deleteAll();
-        Personne p1 = new Personne();
-        p1.setNom("X1");
-        p1.setPrenom("Y1"); 
-        crud.save(p1);
-        
-        Personne p2 = new Personne();
-        p2.setNom("A1");
-        p2.setPrenom("B1"); 
-        crud.save(p2);
-    }
+//    @Before
+//    public void Config(){
+//        crud.deleteAll();
+//        Personne p1 = new Personne();
+//        p1.setNom("X1");
+//        p1.setPrenom("Y1"); 
+//        crud.save(p1);
+//        
+//        Personne p2 = new Personne();
+//        p2.setNom("A1");
+//        p2.setPrenom("B1"); 
+//        crud.save(p2);
+//    }
     
     //@Test
     public void PersonneCRUDTest(){
@@ -54,7 +53,7 @@ public class PersonneServiceCRUDTest {
     
     @Test
     public void PersonneCRUDTestFindOneBy(){
-        Assert.assertNotNull(crud.findOneByPrenomAndNom("Y1", "X1"));
+        Assert.assertNotNull(crud.findOneByPrenomAndNom("Roman", "Polanski"));
     }
     
 }

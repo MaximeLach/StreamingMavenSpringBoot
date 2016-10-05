@@ -115,7 +115,7 @@ public class Personne implements Serializable {
 
     @Override
     public String toString() {
-        return "streaming.entity.Personne[ id=" + id + " ]";
+        return "jpql.entity.Personne[ id=" + id + " ]";
     }
     
 }
