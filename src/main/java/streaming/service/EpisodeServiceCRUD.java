@@ -6,13 +6,16 @@
 package streaming.service;
 
 import java.io.Serializable;
+import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 import streaming.entity.Episode;
+import streaming.entity.Saison;
+import streaming.entity.Serie;
 
 /**
  *
  * @author admin
  */
 public interface EpisodeServiceCRUD extends CrudRepository<Episode, Long>{
-    
+     public List<Episode> finndAllBySaisonAndSerieOrderByEpisodeNomAsc(Saison saison, Serie serie);
 }

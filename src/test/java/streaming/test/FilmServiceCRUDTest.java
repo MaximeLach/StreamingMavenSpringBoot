@@ -10,7 +10,6 @@ import java.io.FileNotFoundException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.List;
 import org.dbunit.DatabaseUnitException;
 import org.dbunit.database.DatabaseConnection;
 import org.dbunit.database.IDatabaseConnection;
@@ -18,16 +17,16 @@ import org.dbunit.dataset.xml.FlatXmlDataSet;
 import org.dbunit.dataset.xml.FlatXmlProducer;
 import org.dbunit.operation.DatabaseOperation;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
+import static org.junit.Assert.*;
+import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.xml.sax.InputSource;
-import streaming.entity.Personne;
-import streaming.service.PersonneServiceCRUD;
 import streaming.spring.SpringConfig;
+import streaming.service.FilmServiceCRUD;
 
 /**
  *
@@ -35,10 +34,10 @@ import streaming.spring.SpringConfig;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes=SpringConfig.class)
-public class PersonneServiceCRUDTest {
+public class FilmServiceCRUDTest {
     
     @Autowired
-    private PersonneServiceCRUD crud;
+    private FilmServiceCRUD crud;
     
     @Before
     public void Config() throws ClassNotFoundException, SQLException, DatabaseUnitException, FileNotFoundException{
@@ -53,17 +52,20 @@ public class PersonneServiceCRUDTest {
         DatabaseOperation.CLEAN_INSERT.execute(connection, dataSet);
     }
     
+//    @Test
+//    public void testSupprimerTout(){
+//        dao.deleteAll();
+//    }
+    
+    //1. Le film pour un titre donné
     //@Test
-    public void PersonneCRUDTest(){
-        List<Personne> personnes = crud.findAll();
-        for(Personne p : personnes){
-            System.out.println("Personne : " +p.getNom() +" " + p.getPrenom());
-        }
-        
-    }
-    //@Test
-    public void PersonneCRUDTestFindOneBy(){
-        Assert.assertNotNull(crud.findOneByPrenomAndNom("Roman", "Polanski"));
+    public void Exercice1(){
+        Assert.assertNotNull(crud.findOneByTitre("Fargo"));
     }
     
+    //2. Les films pour une année donnée
+    @Test
+    public void Exercice2(){
+        
+    }
 }
