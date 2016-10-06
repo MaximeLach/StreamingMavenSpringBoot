@@ -28,10 +28,8 @@ public interface FilmServiceCRUD extends CrudRepository<Film, Long>{
     public List<Film> findAllByPaysId(Long paysId);
     public List<Film> findAllByGenreIdAndPaysId(Long genreId, Long paysId);
     public List<Film> findAllByActeursPrenomAndActeursNom(String prenom, String nom);
-    public Long countAllByActeurs(Personne acteur);
+    public Long countByActeurs(Personne acteur);
     public List<Film> findAllByRealisateursOrderByTitreAsc(Personne realisateur);
-    public Long countAllByRealisateurs(Personne realisateur); 
-    public List<Film> findAllByPaysAndGenreAndRealisateursAndActeurs(Pays pays,Genre genre,Personne Realisateur,Personne Acteur);
-    
-    
+    public Long countByRealisateurs(Personne realisateur); 
+    public List<Film> findAllByPaysNomAndGenreNomAndRealisateursNomAndRealisateursPrenomAndActeursNomAndActeursPrenom(String pays,String genre,String nomReal,String prenomReal,String nomActeur,String prenomActeur);
 }

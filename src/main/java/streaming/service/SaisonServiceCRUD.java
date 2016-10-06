@@ -17,6 +17,6 @@ import streaming.entity.Serie;
  * @author admin
  */
 public interface SaisonServiceCRUD extends CrudRepository<Saison, Long> {
-    public List<Saison> findAllBySerieOrderBySerieNomASC(Serie serie);
+   public List<Saison> findAllBySerieIdOrderByNumSaison(Long serieId);
    
 }

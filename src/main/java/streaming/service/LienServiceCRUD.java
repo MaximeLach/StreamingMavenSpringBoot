@@ -17,6 +17,6 @@ import streaming.entity.Serie;
  * @author admin
  */
 public interface LienServiceCRUD extends CrudRepository<Lien, Long>{
-    public List<Lien> findAllByFilm(Film film);
-    public List<Lien> findAllByEpisodeNumEpisodeAndSaisonNumSaisonAndSerie(Integer numEpisode, Integer NumSaison, Serie serie);
+    public List<Lien> findAllByFilmTitre(String titre);
+    public List<Lien> findAllByEpisodeNumEpisodeAndEpisodeSaisonNumSaisonAndEpisodeSaisonSerieId(Integer numEpisode, Integer numSaison, Long serieId);
 }
